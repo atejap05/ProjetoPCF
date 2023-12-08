@@ -36,7 +36,11 @@ export class ReactPCFProject
   public updateView(
     context: ComponentFramework.Context<IInputs>
   ): React.ReactElement {
-    const props: IBasicDialogProps = { name: "Hello, World!" };
+    const props: IBasicDialogProps = {
+      titulo: context.parameters.Título.raw || "Título padrão",
+      mensagem: context.parameters.Mensagem.raw || "Mensagem padrão",
+    };
+
     return React.createElement(BasicDialog, props);
   }
 
