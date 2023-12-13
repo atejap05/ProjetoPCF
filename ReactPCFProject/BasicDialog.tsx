@@ -1,7 +1,5 @@
 import * as React from "react";
 import { makeStyles } from "@fluentui/react/lib/Theme";
-import { DefaultButton } from "@fluentui/react/lib/Button";
-import { useBoolean } from "@fluentui/react-hooks";
 
 // TODO: See Doc to build the component:https://learn.microsoft.com/en-us/power-apps/developer/component-framework/create-custom-controls-using-pcf
 
@@ -95,13 +93,17 @@ export interface IBasicDialogProps {
 }
 
 export const BasicDialog = (props: IBasicDialogProps) => {
-  
   const { titulo, mensagem, show } = props;
-  const [showDialog, setShowDialog] = React.useState(show)
 
-  console.log(showDialog)
+  const [showDialog, setShowDialog] = React.useState(show);
 
-  const toggleHideDialog = () => setShowDialog(showDialog => !setShowDialog);
+  React.useEffect(() => {
+    setShowDialog(!show);
+  }, [show]);
+
+  const toggleHideDialog = () => {
+    setShowDialog(!showDialog);
+  };
 
   const classes = useStyles();
 
@@ -120,10 +122,16 @@ export const BasicDialog = (props: IBasicDialogProps) => {
             </div>
           </main>
           <footer className={classes.footer}>
-            <button className={`${classes.btn} ${classes.btn_cancel}`} onClick={toggleHideDialog}>
+            <button
+              className={`${classes.btn} ${classes.btn_cancel}`}
+              onClick={toggleHideDialog}
+            >
               Cancelar
             </button>
-            <button className={`${classes.btn} ${classes.btn_confirm}`} onClick={toggleHideDialog}>
+            <button
+              className={`${classes.btn} ${classes.btn_confirm}`}
+              onClick={toggleHideDialog}
+            >
               OK
             </button>
           </footer>
