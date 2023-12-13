@@ -4,10 +4,12 @@
 
 // Define IInputs and IOutputs Type. They should match with ControlManifest.
 export interface IInputs {
-    Título: ComponentFramework.PropertyTypes.StringProperty;
-    Mensagem: ComponentFramework.PropertyTypes.StringProperty;
+    title: ComponentFramework.PropertyTypes.StringProperty;
+    message: ComponentFramework.PropertyTypes.StringProperty;
+    show: ComponentFramework.PropertyTypes.TwoOptionsProperty;
 }
 export interface IOutputs {
-    Título?: string;
-    Mensagem?: string;
+    title?: string;
+    message?: string;
+    show?: boolean;
 }

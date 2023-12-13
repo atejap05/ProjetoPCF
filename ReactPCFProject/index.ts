@@ -2,8 +2,7 @@ import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import { BasicDialog, IBasicDialogProps } from "./BasicDialog";
 import * as React from "react";
 
-export class ReactPCFProject
-  implements ComponentFramework.ReactControl<IInputs, IOutputs>
+export class ReactPCFProject implements ComponentFramework.ReactControl<IInputs, IOutputs>
 {
   private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
   private notifyOutputChanged: () => void;
@@ -20,11 +19,7 @@ export class ReactPCFProject
    * @param notifyOutputChanged A callback method to alert the framework that the control has new outputs ready to be retrieved asynchronously.
    * @param state A piece of data that persists in one session for a single user. Can be set at any point in a controls life cycle by calling 'setControlState' in the Mode interface.
    */
-  public init(
-    context: ComponentFramework.Context<IInputs>,
-    notifyOutputChanged: () => void,
-    state: ComponentFramework.Dictionary
-  ): void {
+  public init( context: ComponentFramework.Context<IInputs>,notifyOutputChanged: () => void, state: ComponentFramework.Dictionary): void {
     this.notifyOutputChanged = notifyOutputChanged;
   }
 
@@ -33,12 +28,12 @@ export class ReactPCFProject
    * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
    * @returns ReactElement root react element for the control
    */
-  public updateView(
-    context: ComponentFramework.Context<IInputs>
-  ): React.ReactElement {
+  public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
+    
     const props: IBasicDialogProps = {
-      titulo: context.parameters.Título.raw || "Título padrão",
-      mensagem: context.parameters.Mensagem.raw || "Mensagem padrão",
+      titulo: context.parameters.title.raw || "Título padrão",
+      mensagem: context.parameters.message.raw || "Mensagem padrão",
+      show: context.parameters.show.raw || false,
     };
 
     return React.createElement(BasicDialog, props);

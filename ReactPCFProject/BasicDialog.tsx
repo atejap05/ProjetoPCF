@@ -91,23 +91,23 @@ const useStyles = makeStyles({
 export interface IBasicDialogProps {
   titulo?: string;
   mensagem?: string;
+  show?: boolean;
 }
 
 export const BasicDialog = (props: IBasicDialogProps) => {
-  const { titulo, mensagem } = props;
-  const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
+  
+  const { titulo, mensagem, show } = props;
+  const [showDialog, setShowDialog] = React.useState(show)
+
+  console.log(showDialog)
+
+  const toggleHideDialog = () => setShowDialog(showDialog => !setShowDialog);
 
   const classes = useStyles();
 
   return (
     <>
-      <DefaultButton
-        secondaryText="Opens the Sample Dialog"
-        onClick={toggleHideDialog}
-        text="Show Popup"
-      />
-
-      <div className={classes.modal} hidden={hideDialog}>
+      <div className={classes.modal} hidden={showDialog}>
         <div className={classes.modal_content}>
           <header className={classes.header}>
             <h1>{titulo}</h1>
@@ -120,16 +120,10 @@ export const BasicDialog = (props: IBasicDialogProps) => {
             </div>
           </main>
           <footer className={classes.footer}>
-            <button
-              className={`${classes.btn} ${classes.btn_cancel}`}
-              onClick={toggleHideDialog}
-            >
+            <button className={`${classes.btn} ${classes.btn_cancel}`} onClick={toggleHideDialog}>
               Cancelar
             </button>
-            <button
-              className={`${classes.btn} ${classes.btn_confirm}`}
-              onClick={toggleHideDialog}
-            >
+            <button className={`${classes.btn} ${classes.btn_confirm}`} onClick={toggleHideDialog}>
               OK
             </button>
           </footer>
