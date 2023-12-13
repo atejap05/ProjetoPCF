@@ -1,0 +1,84 @@
+
+.customDialogBox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.customDialogBox-modal_content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  min-width: 50%;
+}
+
+.customDialogBox-header {
+    flex: 1;
+    font-size: 0.4rem;
+    color: #ffffff;
+
+    /** background-color: #00b7c3; */
+
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .customDialogBox-main {
+    flex: 8;
+    padding-bottom: 2rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .customDialogBox-footer {
+    flex: 1;
+    color: green;
+    display: flex;
+    justify-content: center;
+    gap: 10;
+    padding-bottom: 1.2rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .customDialogBox-btn {
+    border: none;
+    border-radius: 2px;
+    padding-bottom: .6rem;
+    padding-top: .6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: .8rem;
+    min-width: 8rem;
+  }
+
+  .customDialogBox-btn_cancel {
+    color: #00b7c3;
+    background-color: #fff;
+    border: 1px solid #00b7c3;
+  }
+
+  .customDialogBox-btn_cancel:hover{
+    background-color: #fefbf4;
+  } 
+
+  .customDialogBox-btn_confirm {
+    color: #fff;
+    background-color: #00b7c3;
+  }
+
+  .customDialogBox-btn_confirm:hover{
+    background-color: #9bd9db;
+  } 
